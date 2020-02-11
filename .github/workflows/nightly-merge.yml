@@ -1,0 +1,23 @@
+name: 'Merge to master'
+
+on:
+  schedule:
+    - cron:  '30 * * * 1-5'
+
+jobs:
+  merge-to-master:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Nightly Merge
+      uses: robotology/gh-action-nightly-merge@v1.2.0
+      with:
+        stable_branch: 'develop'
+        development_branch: 'master'
+        allow_ff: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
