@@ -2,7 +2,7 @@ name: 'Merge to master'
 
 on:
   schedule:
-    - cron:  '31 8 * * *'
+    - cron:  '40 * * * *'
 
 jobs:
   merge-to-master:
